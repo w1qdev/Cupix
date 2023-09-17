@@ -20,4 +20,10 @@ a {
 input {
   outline: none;
   border: none;
+
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 }

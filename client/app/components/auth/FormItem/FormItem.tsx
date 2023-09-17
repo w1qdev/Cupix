@@ -2,17 +2,19 @@
 
 import React from 'react'
 import Image from 'next/image'
+import './FormItem.scss'
 
 
 interface IFormData {
     // Image
     imageLink: string,
-    imageWidth: number,
-    imageHeight: number,
+    imageWidth?: number,
+    imageHeight?: number,
     imageAlt: string,
     // Input
-    InputPlaceholder: string
-    InputValue: string | number,
+    inputPlaceholder: string
+    inputValue?: string | number,
+    inputType: string
 
 }
 
@@ -21,14 +23,15 @@ const FormItem = (formData: IFormData) => {
     <div className="form__item">
         <Image 
             src={formData.imageLink} 
-            width={formData.imageWidth} 
-            height={formData.imageHeight}
+            width={formData.imageWidth || 30} 
+            height={formData.imageHeight || 30}
             alt={formData.imageAlt}
             className='form__item-img' 
         />
         <input 
             className="form__item-input" 
-            placeholder={formData.InputPlaceholder} 
+            placeholder={formData.inputPlaceholder} 
+            type={formData.inputType}
         />
     </div>
   )
