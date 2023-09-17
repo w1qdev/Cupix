@@ -1,24 +1,10 @@
-'use client'
-
-import React from 'react'
+import React, { FC } from 'react'
 import Image from 'next/image'
 import './FormItem.scss'
+import { FormItemProps } from './FormItem.props'
 
 
-interface IFormData {
-    // Image
-    imageLink: string,
-    imageWidth?: number,
-    imageHeight?: number,
-    imageAlt: string,
-    // Input
-    inputPlaceholder: string
-    inputValue?: string | number,
-    inputType: string
-
-}
-
-const FormItem = (formData: IFormData) => {
+const FormItem: FC<FormItemProps> = (formData) => {
   return (
     <div className="form__item">
         <Image 
