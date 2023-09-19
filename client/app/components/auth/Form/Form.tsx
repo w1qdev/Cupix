@@ -12,6 +12,8 @@ const Form = () => {
         setAuthenticationStatus(prevAuthStatus => !prevAuthStatus)
     }
 
+    
+
     const formStatus = authenticationStatus ? (
         
         <>
