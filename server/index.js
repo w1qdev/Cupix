@@ -26,41 +26,43 @@ app.post(`/api/${authEndpoints.REGISTRATION}`, async (req, res) => {
     try {
         const { nickname, password, avatar, link, personal_info } = req.body
 
-        const hashedPassword = await bcrypt.hash(password, bcryptSalt)
-        const isUserExists = await User.findOne({link})
+        const isUserExists = await User.findOne({nickname})
 
         if (isUserExists) {
             // user with this nickname already created
             return res.status(200).json({
-                message: "something gone wrong, try later"
+                message: "this user already exists"
             })
         }
 
+        const hashedPassword = await bcrypt.hash(password, bcryptSalt)
         const user = User({ ...req.body, password: hashedPassword })
+        console.log(user)
+
 
         user.save()
         .then(result => {
             console.log("new user has been created")
             res.status(200).json({
                 message: "new user has been created successfully",
-                body: result
+                body: {
+                    
+                }
             })
         })
         .catch(error => {
             console.error(`new user hasn't been created, some error: \n${error.message}`)
             res.status(400).json({
-                message: "new user hasn't been created successfully",
-                body: error
+                message: "new user hasn't been created successfully"
             })
         })
         
     } catch {
-        console.log("something gone wrong");
-        
         res.json({
             "status": 500,
             "message": "something gone wrong"
         })
+        console.log("something gone wrong");
     }
 })
 

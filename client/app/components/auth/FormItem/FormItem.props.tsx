@@ -7,5 +7,6 @@ export interface FormItemProps {
     // Input
     inputPlaceholder: string
     inputValue?: string | number,
-    inputType: string
+    inputType: string,
+    valueChanger?: any
 }

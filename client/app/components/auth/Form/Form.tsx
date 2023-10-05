@@ -2,18 +2,27 @@
 
 import React, { useState } from 'react'
 import FormItem from '../FormItem/FormItem'
+import { FormValues } from './Form.type'
 import './Form.scss'
 
 
 const Form = () => {
     const [authenticationStatus, setAuthenticationStatus] = useState(true) 
 
+    const onSubmitData = () => {
+        console.log()
+    }
+
+    const [formValues, setFormData] = useState<FormValues>({
+        password: "",
+        phoneNumber: ""
+    })
+
     const changeFormStatus = () => {
         setAuthenticationStatus(prevAuthStatus => !prevAuthStatus)
     }
 
     
-
     const formStatus = authenticationStatus ? (
         
         <>
@@ -23,12 +32,16 @@ const Form = () => {
                 imageAlt={"phone"}
                 inputPlaceholder="Номер телефона"
                 inputType='number'
+                inputValue={formValues.phoneNumber}
+                valueChanger={setFormData}
             />
             <FormItem 
                 imageLink="./authPage/password.svg"
                 imageAlt={"phone"}
                 inputPlaceholder="Придумайте пароль"
                 inputType='password'
+                inputValue={formValues.password}
+                valueChanger={setFormData}
             />
             <FormItem 
                 imageLink="./authPage/password.svg"
@@ -50,12 +63,16 @@ const Form = () => {
                     imageAlt={"phone"}
                     inputPlaceholder="Номер телефона"
                     inputType='number'
+                    inputValue={formValues.phoneNumber}
+                    valueChanger={setFormData}
                 />
                 <FormItem 
                     imageLink="./authPage/password.svg"
                     imageAlt={"phone"}
                     inputPlaceholder="Введите ваш пароль"
                     inputType='password'
+                    inputValue={formValues.password}
+                    valueChanger={setFormData}
                 />
             <button className="form__button" type="submit">Продолжить</button>
             <div className="form__info">
@@ -66,7 +83,7 @@ const Form = () => {
     )
 
     return (
-        <form className="form">
+        <form className="form" onSubmit={onSubmitData}>
             {formStatus}
         </form>
   )

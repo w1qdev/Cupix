@@ -1,10 +1,13 @@
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import Image from 'next/image'
 import './FormItem.scss'
 import { FormItemProps } from './FormItem.props'
+import { FormValues } from '../Form/Form.type'
 
 
-const FormItem: FC<FormItemProps> = (formData) => {
+const FormItem: FC<FormItemProps> = (formData, { inputValue, valueChanger }) => {
+  const [incomingData] = useState(inputValue)
+
   return (
     <div className="form__item">
         <Image 

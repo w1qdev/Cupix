@@ -1,4 +1,4 @@
 [] - Make controlled inputs in FormItem.tsx
 [1/2] - Make auth page design like in figma.
-[] - intergrate react-hook-forms into FormItem.tsx
+[] - Закончить проброс пропсов для Form.tsx и FormItem.tsx 
 [] - make FamilarityPage.tsx
